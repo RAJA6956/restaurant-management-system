@@ -29,6 +29,7 @@ $result = $conn->query($sql);
 <th>Time</th>
 <th>Guests</th>
 <th>Request</th>
+<th>Action</th>
 </tr>
 
 <?php
@@ -45,6 +46,7 @@ echo "<td>".$row['reservation_date']."</td>";
 echo "<td>".$row['reservation_time']."</td>";
 echo "<td>".$row['head_count']."</td>";
 echo "<td>".$row['special_request']."</td>";
+echo "<td><a href='cancelreservation.php?id=".$row['reservation_id']."'>Cancel</a></td>";
 
 echo "</tr>";
 

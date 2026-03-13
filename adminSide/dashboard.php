@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['account_id'])){
-header("Location: login.php");
+header("Location: ../customerSide/login.php");
 exit();
 }
 ?>
@@ -10,7 +10,7 @@ exit();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Customer Dashboard</title>
+<title>Admin Dashboard</title>
 
 <style>
 
@@ -20,14 +20,13 @@ margin:0;
 }
 
 .navbar{
-background-color:#333;
+background-color:#222;
 overflow:hidden;
 }
 
 .navbar a{
 float:left;
 color:white;
-text-align:center;
 padding:14px 16px;
 text-decoration:none;
 }
@@ -49,20 +48,19 @@ padding:20px;
 
 <div class="navbar">
 
-<a href="profile.php">Home</a>
-<a href="menu.php">Menu</a>
-<a href="reservation.php">Reservation</a>
-<a href="myreservation.php">My Reservations</a>
-<a href="logout.php">Logout</a>
+<a href="dashboard.php">Home</a>
+<a href="viewmenu.php">View Menu</a>
+<a href="addmenu.php">Add Menu Item</a>
+<a href="viewreservations.php">Reservations</a>
+<a href="../customerSide/logout.php">Logout</a>
 
 </div>
 
 <div class="container">
 
-<h2>Welcome Customer</h2>
+<h2>Admin Panel</h2>
 
-<p>You are logged in as:</p>
-<p><?php echo $_SESSION['email']; ?></p>
+<p>Welcome Administrator</p>
 
 </div>
 

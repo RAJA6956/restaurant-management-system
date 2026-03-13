@@ -15,7 +15,21 @@ if($result->num_rows > 0){
 $row = $result->fetch_assoc();
 $_SESSION['account_id'] = $row['account_id'];
 $_SESSION['email'] = $row['email'];
+/* check staff role */
+$aid = $row['account_id'];
 
+$checkrole = $conn->query("SELECT role FROM staffs WHERE account_id='$aid'");
+
+if($checkrole->num_rows > 0){
+
+$r = $checkrole->fetch_assoc();
+
+if($r['role'] == 'Admin'){
+header("Location: ../adminSide/dashboard.php");
+exit();
+}
+
+}
 header("Location: profile.php");
 exit();
 
