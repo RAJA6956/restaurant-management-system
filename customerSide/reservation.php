@@ -5,16 +5,16 @@ include "config.php";
 if(isset($_POST['reserve'])){
 
 $name = $_POST['name'];
-$table_id = $_POST['table_id'];
+$table = $_POST['table'];
 $date = $_POST['date'];
 $time = $_POST['time'];
-$head = $_POST['head'];
+$people = $_POST['people'];
 $request = $_POST['request'];
 
 $sql = "INSERT INTO reservations 
 (customer_name, table_id, reservation_time, reservation_date, head_count, special_request)
 VALUES 
-('$name','$table_id','$time','$date','$head','$request')";
+('$name','$table','$time','$date','$people','$request')";
 
 if($conn->query($sql)==TRUE){
 echo "Reservation Successful";
@@ -37,22 +37,22 @@ echo "Error: ".$conn->error;
 
 <form method="POST">
 
-<label>Customer Name</label><br>
+Customer Name<br>
 <input type="text" name="name" required><br><br>
 
-<label>Table ID</label><br>
-<input type="number" name="table_id" required><br><br>
+Table ID<br>
+<input type="number" name="table" required><br><br>
 
-<label>Reservation Date</label><br>
+Reservation Date<br>
 <input type="date" name="date" required><br><br>
 
-<label>Reservation Time</label><br>
+Reservation Time<br>
 <input type="time" name="time" required><br><br>
 
-<label>Number of Guests</label><br>
-<input type="number" name="head" required><br><br>
+Number of People<br>
+<input type="number" name="people" required><br><br>
 
-<label>Special Request</label><br>
+Special Request<br>
 <input type="text" name="request"><br><br>
 
 <button type="submit" name="reserve">Reserve Table</button>
