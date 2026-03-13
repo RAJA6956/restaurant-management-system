@@ -1,5 +1,29 @@
 <?php
+session_start();
 include "config.php";
+
+if(isset($_POST['login'])){
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$sql = "SELECT * FROM accounts WHERE email='$email' AND password='$password'";
+$result = $conn->query($sql);
+
+if($result->num_rows > 0){
+
+$row = $result->fetch_assoc();
+$_SESSION['account_id'] = $row['account_id'];
+$_SESSION['email'] = $row['email'];
+
+header("Location: profile.php");
+exit();
+
+}else{
+echo "Invalid Email or Password";
+}
+
+}
 ?>
 
 <!DOCTYPE html>
